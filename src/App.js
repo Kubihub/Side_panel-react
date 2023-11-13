@@ -2,16 +2,36 @@ import { useState } from "react";
 import { AiOutlineAudit } from "react-icons/ai";
 import { BsFillArrowLeftCircleFill, BsSearch } from "react-icons/bs";
 import { Nav } from "./components/Nav";
+import { RiDashboardFill} from "react-icons/ri";
 
 const App = () => {
   const [open, setOpen] = useState(true);
+  const Menus = [
+    {title: "Dashboard"},
+    {title: "Events & Programs"},
+    {title: "Workshop Records", spacing: true},
+    {
+      title: "Portfolio",
+      submenu:true,
+      submenuItems: [
+        {title: "Submenu 1"},
+        {title: "Submenu 1"},
+        {title: "Submenu 1"},
+
+      ]
+    },
+    {title: "Profile", spacing:true},
+    {title: "Settings"},
+    {title: "Logout"},
+
+  ];
 
   return (
     <>
       <Nav />
-      <div className="bg-600 w-full h-screen flex">
+      <div className="bg-600 w-full h-screen flex bg-back-color">
         <div
-          className={`bg-dark-blue h-screen p-5 pt-8 ${
+          className={`bg-light-white h-screen p-5 pt-8 ${
             open ? "w-72" : "w-20"
           } duration-300 relative`}
         >
@@ -52,6 +72,22 @@ const App = () => {
             focus:outline-none ${!open && "hidden"}`}
             />
           </div>
+          <ul className="pt-2">
+            {Menus.map((menu,index) =>(
+              <>
+                <li key={index} className="text-black-300 text-sn flex
+                items-center gap-x-4 cursor-pointer p-2
+                hover:bg-light-blue rounded-md mt-2">
+                  <span className="text-2xl block float-left">
+                    <RiDashboardFill/>
+                  </span>
+                    <span className={`text-base font-medium flex-1 ${!open && "hidden"}`}>
+                    {menu.title}</span>
+
+                </li>
+              </>
+            ))}
+          </ul>
         </div>
         <div className="p-7">
           <h1 className="text-2xl font-semibold">Homepage</h1>
