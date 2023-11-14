@@ -1,29 +1,29 @@
 import { useState } from "react";
 import { AiOutlineAudit } from "react-icons/ai";
-import { BsFillArrowLeftCircleFill, BsSearch } from "react-icons/bs";
+import { BsFillArrowLeftCircleFill, BsSearch,BsChevronDown,BsCalendar2EventFill,BsPersonWorkspace } from "react-icons/bs";
 import { Nav } from "./components/Nav";
-import { RiDashboardFill} from "react-icons/ri";
+import { RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
+import { CgProfile,CgLogOut } from "react-icons/cg";
 
 const App = () => {
   const [open, setOpen] = useState(true);
+  const [submenuOpen, setsubmenuOpen] = useState(false);
   const Menus = [
-    {title: "Dashboard"},
-    {title: "Events & Programs"},
-    {title: "Workshop Records", spacing: true},
+    { title: "Dashboard" },
+    { title: "Events & Programs", icon:<BsCalendar2EventFill/> },
+    { title: "Workshop Records", spacing: true, icon: <BsPersonWorkspace/>},
     {
       title: "Portfolio",
-      submenu:true,
+      submenu: true,
       submenuItems: [
-        {title: "Submenu 1"},
-        {title: "Submenu 1"},
-        {title: "Submenu 1"},
-
-      ]
+        { title: "Submenu 1" },
+        { title: "Submenu 1" },
+        { title: "Submenu 1" },
+      ],
     },
-    {title: "Profile", spacing:true},
-    {title: "Settings"},
-    {title: "Logout"},
-
+    { title: "Profile", spacing: true, icon:<CgProfile/>},
+    { title: "Settings", icon: <RiSettings5Fill/>},
+    { title: "Logout", icon: <CgLogOut/>},
   ];
 
   return (
@@ -39,7 +39,6 @@ const App = () => {
             className={`bg-light-white text-3xl rounded-full absolute -right-3 top-9 cursor-pointer
       border-dark-blue"
           ${!open && "rotate-180"}`}
-          
             onClick={() => setOpen(!open)}
           />
 
@@ -73,18 +72,43 @@ const App = () => {
             />
           </div>
           <ul className="pt-2">
-            {Menus.map((menu,index) =>(
+            {Menus.map((menu, index) => (
               <>
-                <li key={index} className="text-black-300 text-sn flex
+                <li
+                  key={index}
+                  className={`text-black-300 text-sn flex
                 items-center gap-x-4 cursor-pointer p-2
-                hover:bg-light-blue rounded-md mt-2">
+                hover:bg-light-blue rounded-md ${
+                  menu.spacing ? "mt-9" : "mt-2"
+                }`}
+                >
                   <span className="text-2xl block float-left">
-                    <RiDashboardFill/>
+                    {menu.icon ? menu.icon :<RiDashboardFill />}
+                  </span> 
+                  <span
+                    className={`text-base font-medium flex-1 ${
+                      !open && "hidden"
+                    }`}
+                  >
+                    {menu.title}
                   </span>
-                    <span className={`text-base font-medium flex-1 ${!open && "hidden"}`}>
-                    {menu.title}</span>
-
+                  {menu.submenu && open && (
+                  <BsChevronDown className={`${submenuOpen && "rotate-180"}`}
+                   onClick={() => setsubmenuOpen(!submenuOpen)}/>
+                  )}
                 </li>
+                {menu.submenu && submenuOpen && open && (
+                  <ul>
+                    {menu.submenuItems.map((submenuItem, index) => (
+                      <li key={index} className="text-black-300 text-sn flex
+                      items-center gap-x-4 cursor-pointer p-2 px-5
+                      hover:bg-light-blue rounded-md">
+                        {submenuItem.title}
+                      </li>
+                    ))}
+                  </ul>
+                )
+                }
               </>
             ))}
           </ul>
