@@ -8,10 +8,15 @@ import {
 } from "react-icons/bs";
 import { RiDashboardFill, RiSettings5Fill } from "react-icons/ri";
 import { CgProfile, CgLogOut } from "react-icons/cg";
+import { TbEPassport } from "react-icons/tb";
 import {
   EVENTS_AND_PROGRAMS_URL,
   HOMEPAGE_URL,
   WORKSHOP_RECORDS_URL,
+  PORTFOLIO_URL,
+  PROFILE_URL,
+  SETTINGS_URL,
+  LOGOUT_URL,
 } from "../App";
 import { Link } from "react-router-dom";
 
@@ -32,10 +37,12 @@ export default function DashboardContainer({ children }) {
     },
     {
       title: "Portfolio",
+      url: PORTFOLIO_URL,
+      icon: <TbEPassport />,
     },
-    { title: "Profile", icon: <CgProfile /> },
-    { title: "Settings", icon: <RiSettings5Fill /> },
-    { title: "Logout", icon: <CgLogOut /> },
+    { title: "Profile", url: PROFILE_URL, icon: <CgProfile /> },
+    { title: "Settings", url: SETTINGS_URL, icon: <RiSettings5Fill /> },
+    { title: "Logout", url: LOGOUT_URL, icon: <CgLogOut /> },
   ];
 
   return (
