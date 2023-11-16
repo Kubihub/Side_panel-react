@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { AiOutlineAudit } from "react-icons/ai";
-import { BsFillArrowLeftCircleFill, BsSearch,BsChevronDown,BsCalendar2EventFill,BsPersonWorkspace } from "react-icons/bs";
-import { Nav } from "./components/Nav";
-import { RiDashboardFill,RiSettings5Fill } from "react-icons/ri";
-import { CgProfile,CgLogOut } from "react-icons/cg";
+import {
+  BsFillArrowLeftCircleFill,
+  BsChevronDown,
+  BsCalendar2EventFill,
+  BsPersonWorkspace,
+} from "react-icons/bs";
+import { RiDashboardFill, RiSettings5Fill } from "react-icons/ri";
+import { CgProfile, CgLogOut } from "react-icons/cg";
 
 const App = () => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setsubmenuOpen] = useState(false);
   const Menus = [
-    { title: "Dashboard" },
-    { title: "Events & Programs", icon:<BsCalendar2EventFill/> },
-    { title: "Workshop Records", spacing: true, icon: <BsPersonWorkspace/>},
+    { title: "Home" },
+    { title: "Events & Programs", icon: <BsCalendar2EventFill /> },
+    { title: "Workshop Records", icon: <BsPersonWorkspace /> },
     {
       title: "Portfolio",
       submenu: true,
@@ -21,14 +24,13 @@ const App = () => {
         { title: "Submenu 1" },
       ],
     },
-    { title: "Profile", spacing: true, icon:<CgProfile/>},
-    { title: "Settings", icon: <RiSettings5Fill/>},
-    { title: "Logout", icon: <CgLogOut/>},
+    { title: "Profile", icon: <CgProfile /> },
+    { title: "Settings", icon: <RiSettings5Fill /> },
+    { title: "Logout", icon: <CgLogOut /> },
   ];
 
   return (
     <>
-      <Nav />
       <div className="bg-600 w-full h-screen flex bg-back-color">
         <div
           className={`bg-light-white h-screen p-5 pt-8 ${
@@ -43,24 +45,31 @@ const App = () => {
           />
 
           <div className="inline-flex">
-            <AiOutlineAudit
+
+            {/* --logo--section */}
+            <img
+              src="./gset_logo.png"
+              alt="logo"
               className={`bg-amber-300 text-4xl
         rounded cursor-pointer block float-left mr-2 duration-500 ${
-          open && "rotate-[360deg]"
+          open && "rotate-[]"
         }`}
             />
+            <div>
             <h1
-              className={`text-white origin-left font-medium
-        text-2xl duration-300 ${!open && "scale-0"}`}
-            >
-              GSET
+              className={`text-deep-blue origin-left mt-5
+        text-2xl duration-300 ${!open && "scale-0" }`}
+        style={{ fontSize: 16}}>
+              Hello Adiza
             </h1>
+            </div>
+            
           </div>
           <div
             className={`flex items-center rounded-md
           bg-light-blue mt-6 ${!open ? "px-2.5" : "px-4"}py-2`}
           >
-            <BsSearch
+            {/* <BsSearch
               className={`text-white text-lg block ml-2
             float-left cursor-pointor ${open && "mr-2"}`}
             />
@@ -69,22 +78,22 @@ const App = () => {
               placeholder="Search"
               className={`text-base bg-transparent w-full text-white
             focus:outline-none ${!open && "hidden"}`}
-            />
+            /> */}
           </div>
           <ul className="pt-2">
             {Menus.map((menu, index) => (
               <>
                 <li
                   key={index}
-                  className={`text-black-300 text-sn flex
-                items-center gap-x-4 cursor-pointer p-2
+                  className={`text-secondary-color hover:text-white text-sn flex
+                items-center gap-x-6 cursor-pointer p-2
                 hover:bg-light-blue rounded-md ${
                   menu.spacing ? "mt-9" : "mt-2"
                 }`}
                 >
                   <span className="text-2xl block float-left">
-                    {menu.icon ? menu.icon :<RiDashboardFill />}
-                  </span> 
+                    {menu.icon ? menu.icon : <RiDashboardFill />}
+                  </span>
                   <span
                     className={`text-base font-medium flex-1 ${
                       !open && "hidden"
@@ -93,22 +102,26 @@ const App = () => {
                     {menu.title}
                   </span>
                   {menu.submenu && open && (
-                  <BsChevronDown className={`${submenuOpen && "rotate-180"}`}
-                   onClick={() => setsubmenuOpen(!submenuOpen)}/>
+                    <BsChevronDown
+                      className={`${submenuOpen && "rotate-180"}`}
+                      onClick={() => setsubmenuOpen(!submenuOpen)}
+                    />
                   )}
                 </li>
                 {menu.submenu && submenuOpen && open && (
                   <ul>
                     {menu.submenuItems.map((submenuItem, index) => (
-                      <li key={index} className="text-black-300 text-sn flex
-                      items-center gap-x-4 cursor-pointer p-2 px-5
-                      hover:bg-light-blue rounded-md">
+                      <li
+                        key={index}
+                        className="text-black-300 text-sn flex
+                      items-center gap-x-5 cursor-pointer p-2 px-5
+                      hover:bg-light-blue rounded-md"
+                      >
                         {submenuItem.title}
                       </li>
                     ))}
                   </ul>
-                )
-                }
+                )}
               </>
             ))}
           </ul>
@@ -117,6 +130,7 @@ const App = () => {
           <h1 className="text-2xl font-semibold">Homepage</h1>
         </div>
       </div>
+      
     </>
   );
 };
