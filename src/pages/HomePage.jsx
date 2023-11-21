@@ -9,7 +9,13 @@ export default function HomePage() {
           <h1>
             This is the main page
           </h1>
+          <div className="bg-600 w-full h-screen flex bg-back-color">
+            
+          </div>
       </div>
+      <div>
+            <img src="../images/img.jpg" alt="" className="jpg" />
+            </div>
     </DashboardContainer> 
   );
 }
