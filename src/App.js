@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Logout from './pages/Logout';
 import Signin from './pages/Signin';
+import Register from './pages/Register';
 
 export const HOMEPAGE_URL = '/';
 export const EVENTS_AND_PROGRAMS_URL = '/events-and-programs';
@@ -17,6 +18,7 @@ export const PROFILE_URL = '/profile';
 export const SETTINGS_URL = '/settings';
 export const LOGOUT_URL = '/logout';
 export const SIGNUP_URL = 'Signin';
+export const REGISTER_URL = 'Register';
 
 
 export default function App() {
@@ -31,6 +33,7 @@ export default function App() {
         <Route path={SETTINGS_URL} element={<Settings />} />
         <Route path={LOGOUT_URL} element={<Logout />} />
         <Route path={SIGNUP_URL} element={<Signin />} />
+        <Route path={REGISTER_URL} element={<Register />} />
       </Routes>
     </BrowserRouter>
   )
