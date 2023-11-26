@@ -110,7 +110,7 @@ export default function DashboardContainer({ children }) {
             ))}
           </ul>
         </div>
-        <div className="p-7">{children}</div>
+        <div className="h-full w-full p-7">{children}</div>
       </div>
     </>
   );
