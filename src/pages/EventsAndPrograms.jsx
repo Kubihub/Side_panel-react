@@ -26,7 +26,7 @@ export default function EventsAndPrograms() {
         <h1 className="text-2xl font-semibold">Events And Programs</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 my-10">
-          {[...dummyData, ...dummyData].map((event, index) => (
+          {[...dummyData, ...dummyData,...dummyData].map((event, index) => (
             <div className="max-w-sm rounded overflow-hidden shadow-lg flex-box">
               <img
                 className="object-cover w-full h-[200px]"
