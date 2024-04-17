@@ -23,7 +23,7 @@ export default function EventsAndPrograms() {
   return (
     <DashboardContainer>
       <div className="bg-white p-4 ">
-        <h1 className="text-2xl font-semibold">Events And Programs</h1>
+        <h1 className="text-2xl font-semibold">Department</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 my-10">
           {[...dummyData, ...dummyData,...dummyData].map((event, index) => (

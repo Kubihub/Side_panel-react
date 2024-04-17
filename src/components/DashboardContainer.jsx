@@ -26,12 +26,12 @@ export default function DashboardContainer({ children }) {
   const MENUS = [
     { title: "Home", url: HOMEPAGE_URL },
     {
-      title: "Events & Programs",
+      title: "Department",
       url: EVENTS_AND_PROGRAMS_URL,
       icon: <BsCalendar2EventFill />,
     },
     {
-      title: "Workshop Records",
+      title: "Catlog",
       url: WORKSHOP_RECORDS_URL,
       icon: <BsPersonWorkspace />,
     },
@@ -63,8 +63,9 @@ export default function DashboardContainer({ children }) {
           <div className="inline-flex">
             {/* --logo--section */}
             <img
-              src="./gset_logo.png"
+              // src="./gwl.jpg"
               alt="logo"
+              height="50"
               className={`text-4xl object-contain rounded cursor-pointer block float-left mr-2 duration-500 
               ${open && "rotate-[]"}`}
             />
